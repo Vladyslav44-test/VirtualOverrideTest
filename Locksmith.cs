@@ -16,7 +16,7 @@ namespace VirtualOverrideTest
             string safeContents = safe.Open(Combination);
             ReturnContents(safeContents, owner);
         }
-        protected void ReturnContents(string safeContents, SafeOwner owner)
+        protected virtual void ReturnContents(string safeContents, SafeOwner owner)
         {
             owner.ReceiveContents(safeContents);
         }
@@ -26,7 +26,7 @@ namespace VirtualOverrideTest
     {
         private string stolenJewels;
 
-        protected void ReturnContents(string safeContents, SafeOwner owner)
+        protected override void ReturnContents(string safeContents, SafeOwner owner)
         {
             stolenJewels = safeContents;
             Console.WriteLine($"I'm stealing the jewels! I stole: {stolenJewels}");
